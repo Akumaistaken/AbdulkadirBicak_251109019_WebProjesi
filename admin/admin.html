@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeknoHaber</title>
+    <link rel="stylesheet" href="/css/panel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .a-tablo-kapsayici {
+            margin: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .sil-butonu {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .sil-butonu:hover {
+            background-color: #c0392b;
+        }
+
+        .guncelle-butonu {
+            background-color: #f39c12;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-right: 5px;
+        }
+
+        .guncelle-butonu:hover {
+            background-color: #d68910;
+        }
+
+        .bolum-basligi {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="a-admin-kapsayici">
+
+        <nav id="a-yan-menu">
+            <div class="a-logo-alani">
+                <h2>TEKNO<span>ADMIN</span></h2>
+            </div>
+            <ul class="a-menu-liste">
+                <li><a href="/admin" class="a-menu-elemani a-aktif"><i class="fa-solid fa-gauge"></i> Kontrol Paneli</a>
+                </li>
+                <li><a href="/haber-ekle" class="a-menu-elemani"><i class="fa-solid fa-box-open"></i> Ürün Ekle</a></li>
+                <li><a href="/anasayfa.html" class="a-menu-elemani"><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        Siteye Dön</a></li>
+            </ul>
+        </nav>
+
+        <main id="a-ana-bolum">
+            <header id="a-ust-bilgi">
+                <div class="a-sayfa-basligi">
+                    <h1>Sistem Genel Bakış</h1>
+                </div>
+                <div class="a-kullanici-profili">
+                    <span>Sistem Yöneticisi</span>
+                    <i class="fa-solid fa-circle-user"></i>
+                </div>
+            </header>
+
+            <div class="a-tablo-kapsayici" id="urun-bolumu">
+                <h2 class="bolum-basligi"><i class="fa-solid fa-box-open"></i> Kayıtlı Ürünler</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ürün Adı</th>
+                            <th>Kategori</th>
+                            <th>Fiyat</th>
+                            <th>Ekleyen</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody id="urun-govdesi">
+                        <tr>
+                            <td colspan="5" style="text-align: center;">Ürünler yükleniyor...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="a-tablo-kapsayici" id="kullanici-bolumu">
+                <h2 class="bolum-basligi"><i class="fa-solid fa-users"></i> Kayıtlı Kullanıcılar</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ad Soyad</th>
+                            <th>E-posta</th>
+                            <th>Rol</th>
+                            <th>Durum</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody id="kullanici-govdesi">
+                        <tr>
+                            <td colspan="5" style="text-align: center;">Kullanıcılar yükleniyor...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            urunleriGetir();
+            kullanicilariGetir();
+        });
+
+        async function urunleriGetir() {
+            const urunGovdesi = document.getElementById('urun-govdesi');
+
+            try {
+                const cevap = await fetch('/api/251109019/tavsiyeler');
+                const urunler = await cevap.json();
+
+                if (urunler.length === 0) {
+                    urunGovdesi.innerHTML = '<tr><td colspan="5" style="text-align: center;">Henüz ürün eklenmemiş.</td></tr>';
+                    return;
+                }
+
+                urunGovdesi.innerHTML = '';
+                urunler.forEach(urun => {
+                    urunGovdesi.innerHTML += `
+                        <tr>
+                            <td><strong>${urun.urunAdi}</strong></td>
+                            <td>${urun.kategori_id.kategoriAdi}</td>
+                            <td>${urun.fiyat || '-'}</td>
+                            <td>${urun.ekleyen_id.adsoyad}</td>
+                            <td>
+                                <button class="guncelle-butonu" onclick="urunuGuncelle('${urun._id}')"><i class="fa-solid fa-pen"></i></button>
+                                <button class="sil-butonu" onclick="urunuSil('${urun._id}')"><i class="fa-solid fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    `;
+                });
+            } catch (hata) {
+                urunGovdesi.innerHTML = '<tr><td colspan="5" style="text-align: center; color: red;">Veriler çekilirken hata oluştu!</td></tr>';
+            }
+        }
+
+
+        async function kullanicilariGetir() {
+            const kullaniciGovdesi = document.getElementById('kullanici-govdesi');
+
+            try {
+                const cevap = await fetch('/api/251109019/kullanicilar');
+                const kullanicilar = await cevap.json();
+
+                if (kullanicilar.length === 0) {
+                    kullaniciGovdesi.innerHTML = '<tr><td colspan="5" style="text-align: center;">Kayıtlı kullanıcı bulunamadı.</td></tr>';
+                    return;
+                }
+
+                kullaniciGovdesi.innerHTML = '';
+                kullanicilar.forEach(k => {
+                    kullaniciGovdesi.innerHTML += `
+                        <tr>
+                            <td>${k.adsoyad}</td>
+                            <td>${k.eposta}</td>
+                            <td>${k.rol}</td>
+                            <td>-</td>
+                            <td>
+                                ${k.eposta !== 'admin@mail.com' ? `<button class="sil-butonu" onclick="kullaniciSil('${k._id}')"><i class="fa-solid fa-user-slash"></i> Sil</button>` : '<span style="color:gray;">Silinemez</span>'}
+                            </td>
+                        </tr>
+                    `;
+                });
+            } catch (hata) {
+                kullaniciGovdesi.innerHTML = '<tr><td colspan="5" style="text-align: center; color: red;">Kullanıcılar yüklenirken hata oluştu!</td></tr>';
+            }
+        }
+
+
+        async function urunuSil(id) {
+            if (confirm('Bu ürünü silmek istediğinize emin misiniz?')) {
+                try {
+                    const cevap = await fetch(`/api/251109019/tavsiyeler/${id}`, { method: 'DELETE' });
+                    if (cevap.ok) {
+                        alert('Ürün başarıyla silindi!');
+                        urunleriGetir();
+                    }
+                } catch (hata) { alert('Silme işlemi başarısız oldu.'); }
+            }
+        }
+
+
+        async function urunuGuncelle(id) {
+            const yeniFiyat = prompt("Ürünün yeni fiyatını giriniz (Örn: 55.000 TL):");
+            if (yeniFiyat) {
+                try {
+                    const cevap = await fetch(`/api/251109019/tavsiyeler/${id}`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ fiyat: yeniFiyat })
+                    });
+                    if (cevap.ok) {
+                        alert('Fiyat başarıyla güncellendi!');
+                        urunleriGetir();
+                    }
+                } catch (hata) { alert('Güncelleme başarısız oldu.'); }
+            }
+        }
+
+
+        async function kullaniciSil(id) {
+            if (confirm('Bu kullanıcıyı silmek istediğinize emin misiniz?')) {
+                try {
+                    const cevap = await fetch(`/api/251109019/kullanicilar/${id}`, { method: 'DELETE' });
+                    if (cevap.ok) {
+                        alert('Kullanıcı başarıyla silindi!');
+                        kullanicilariGetir();
+                    }
+                } catch (hata) { alert('Kullanıcı silinirken hata oluştu.'); }
+            }
+        }
+    </script>
+</body>
+
+</html>

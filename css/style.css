@@ -1,0 +1,487 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f6f8;
+    background-image:
+        linear-gradient(#e1e4e8 1px, transparent 1px),
+        /* hocam bu komut iki renk arası geçiş yapmayı sağlar grafik dersinde anlattınız konudan esinlendim */
+        linear-gradient(90deg, #e1e4e8 1px, transparent 1px);
+    background-size: 30px 30px;
+    /*Hocam burada  Karelerin boyutu ayarlamak için kullandım */
+    background-position: center top;
+    color: #333;
+}
+
+
+#a-ustkisim {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    border-bottom: 5px solid #ff6600;
+    overflow: hidden;
+    background-color: #000;
+    /*Hocam burada  görsel yüklenmezse veya kenarlarda boşluk kalırsa siyah zemin olması için kullandım*/
+}
+
+#a-kapak-gorsel {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+    z-index: 1;
+    filter: brightness(0.8);
+    /* Hocam bu komut parlaklik efekti eklemeye yarıyor bu komut arka plandaki foto yerine yazıyı ön plana çıkartmaya çalıştım */
+}
+
+
+#a-karsilama {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*Hocam  bu komudu google ve videolardan yardım alarak buldum yazı vs şeyleri ortalamak için kullanılıyor */
+    z-index: 10;
+    text-align: center;
+    width: 90%;
+    padding: 20px;
+    background-color: transparent;
+    border: none;
+}
+
+#a-karsilama-baslik {
+    font-size: 3em;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 800;
+    color: #ffffff;
+
+}
+
+
+#a-karsilama-altbaslik {
+    font-size: 1.4em;
+    margin-top: 15px;
+    font-weight: 400;
+    color: #f0f0f0;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.a-logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    text-decoration: none;
+}
+
+
+
+#a-logo-resmi {
+    height: 50px;
+    width: auto;
+    /*Hocam resimlerin düzgün olması için kullandım*/
+
+    transition: transform 0.3s ease;
+
+}
+
+
+
+#a-ust-menu {
+    background-color: #191970;
+    width: 100%;
+    height: 70px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    /* Hocam kutunun arkasına gölge eklemek için kullandım */
+    position: relative;
+    z-index: 1000;
+    border-radius: 40px;
+}
+
+
+#a-menu-s {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    /* Hocam Flexbox komudu ile yan yana dizmesini sağladım*/
+    justify-content: space-between;
+    /*Hocam kaymaması ve hepsinin farklı yerlerde olması için kullandım*/
+    align-items: center;
+    height: 100%;
+
+}
+
+
+.a-logo-alani {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+
+#a-ana-liste {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.a-liste-ogesi {
+    position: relative;
+    margin-left: 5px;
+}
+
+
+
+.a-link {
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    display: block;
+    font-weight: 500;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+
+.a-liste-ogesi:hover .a-link {
+    background-color: rgba(255, 255, 255, 0.1);
+    /*Hocam  transparan arka planı yapmak için google dan yardım aldım*/
+    color: #ffd700;
+}
+
+
+.a-alt-menu {
+    position: absolute;
+    left: 0;
+    width: 200px;
+    background-color: white;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    list-style: none;
+    padding: 10px 0;
+    border-radius: 0 0 8px 8px;
+    border-top: 3px solid #ffd700;
+    display: none;
+}
+
+.a-alt-menu li a {
+    color: #333;
+    padding: 12px 20px;
+    display: block;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+
+
+.a-alt-menu li a:hover {
+    background-color: #f0f0f0;
+    color: #191970;
+    padding-left: 25px;
+}
+
+
+.a-acilirmenu:hover .a-alt-menu {
+    display: block;
+    animation: a-fadeIn 0.3s;
+}
+
+
+
+#a-kutu {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+#a-kapak-gorsel {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+#a-baslik-alani {
+    padding: 20px;
+    text-align: center;
+}
+
+.a-ana-baslik {
+    color: #2c3e50;
+    font-size: 2em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+#a-haber {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+
+.a-haber-kart {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.a-haber-kart:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-color: #ff6600;
+}
+
+
+.a-haber-icerik {
+    padding: 15px;
+}
+
+.a-kategori {
+    background-color: #ff6600;
+    color: white;
+    padding: 4px 8px;
+    font-size: 0.8em;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.a-haber-baslik {
+    margin: 0 0 10px 0;
+    font-size: 1.2em;
+    color: #222;
+}
+
+.a-haber-ozet {
+    font-size: 0.9em;
+    color: #666;
+    line-height: 1.5;
+}
+
+.a-devamini-oku {
+    display: inline-block;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #ff6600;
+    font-weight: bold;
+}
+
+
+
+
+#a-altkisim {
+    background-color: #04083b;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 40px;
+    border-top: 5px solid #0004ff;
+    font-size: 0.9em;
+}
+
+.a-adres-kutusu {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ffffff;
+}
+
+.a-adres-kutusu h4 {
+    margin: 0 0 10px 0;
+    color: #ffffff;
+    font-size: 1.1em;
+}
+
+.a-adres-detay {
+    margin: 5px 0;
+    color: #ccc;
+}
+
+.a-telifhakki {
+    font-size: 0.85em;
+    color: #ffffff;
+}
+
+#a-form-bolumu {
+    flex: 1;
+    min-width: 300px;
+}
+
+.a-bolum-baslik {
+    color: #2c3e50;
+    border-left: 5px solid #0099ff;
+    padding-left: 15px;
+    margin-bottom: 25px;
+}
+
+.a-form-eleman {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.a-form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #555;
+}
+
+.a-input-kutu {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.a-input-kutu:focus {
+    outline: none;
+    border-color: #0026ff;
+    box-shadow: 0 0 5px rgba(255, 102, 0, 0.2);
+}
+
+#a-gonder-buton {
+    background-color: #002fff;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#a-gonder-buton:hover {
+    background-color: #e65c00;
+}
+
+
+#a-harita-bolumu {
+    flex: 1;
+    min-width: 300px;
+}
+
+#a-google-harita {
+    width: 100%;
+    height: 300px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+#a-kutu-1 {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+
+#a-hakkimizda-govde {
+    padding: 40px;
+    flex: 1;
+}
+
+.a-baslik-buyuk {
+    color: #2c3e50;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ff6600;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+
+.a-icerik-satir {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+
+.a-metin-kutusu {
+    flex: 1;
+    min-width: 300px;
+    font-size: 25px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.a-metin-kutusu p {
+    margin-bottom: 20px;
+}
+
+
+.a-video-kutusu {
+    flex: 1;
+    min-width: 300px;
+}
+
+.a-video-cerceve {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background-color: #000;
+}
+
+.a-video-cerceve iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+
+#a-fiyat-tablosu {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+#a-fiyat-tablosu th,
+#a-fiyat-tablosu td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#a-fiyat-tablosu th {
+    background-color: #333;
+    color: white;
+    text-transform: uppercase;
+}
+
+
+#a-fiyat-tablosu tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+#a-fiyat-tablosu tbody tr:hover {
+    background-color: #0077ff;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}

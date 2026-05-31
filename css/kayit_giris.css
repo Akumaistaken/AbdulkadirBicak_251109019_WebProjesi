@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.a-ana-kutu {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.a-form-kapsayici {
+    width: 100%;
+}
+
+.a-form-kutusu {
+    width: 100%;
+}
+
+.a-kayit-kutusu {
+    display: none;
+}
+#a-giris-radyo:checked ~ .a-form-kapsayici .a-giris-kutusu {
+    display: block;
+    animation: fadeIn 0.4s;
+}
+
+#a-giris-radyo:checked ~ .a-form-kapsayici .a-kayit-kutusu {
+    display: none;
+}
+
+#a-kayit-radyo:checked ~ .a-form-kapsayici .a-kayit-kutusu {
+    display: block;
+    animation: fadeIn 0.4s;
+}
+
+#a-kayit-radyo:checked ~ .a-form-kapsayici .a-giris-kutusu {
+    display: none;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+.a-girdi-grubu {
+    margin-bottom: 20px;
+}
+
+.a-girdi-grubu input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.a-girdi-grubu input:focus {
+    border-color: #764ba2;
+}
+
+.a-buton {
+    width: 100%;
+    padding: 12px;
+    background-color: #764ba2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.a-buton:hover {
+    background-color: #5a3780;
+}
+
+.a-gecis-metni {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.a-gecis-linki {
+    color: #764ba2;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.a-gecis-linki:hover {
+    text-decoration: underline;
+}

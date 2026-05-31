@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yönetici Paneli</title>
+    <link rel="stylesheet" href="/css/panel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div id="a-admin-kapsayici">
+
+        <nav id="a-yan-menu">
+            <div class="a-logo-alani">
+                <h2>TEKNO<span>ADMIN</span></h2>
+            </div>
+            <ul class="a-menu-liste">
+                <li><a href="/admin" class="a-menu-elemani a-aktif"><i class="fa-solid fa-gauge"></i> Kontrol Paneli</a>
+                </li>
+                <li><a href="/haber-ekle" class="a-menu-elemani"><i class="fa-solid fa-box-open"></i> Ürün Ekle</a></li>
+                <li><a href="/anasayfa.html" class="a-menu-elemani"><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        Siteye Dön</a></li>
+            </ul>
+        </nav>
+
+        <main id="a-ana-bolum">
+            <header id="a-ust-bilgi">
+                <div class="a-sayfa-basligi">
+                    <h1>Ürün Yönetimi</h1>
+                </div>
+                <div class="a-kullanici-profili">
+                    <span>Hoş Geldin, Abdulkadir</span>
+                    <i class="fa-solid fa-circle-user"></i>
+                </div>
+            </header>
+
+            <div class="a-form-alani">
+                <h2>Yeni Tavsiye Ürün Ekle</h2>
+
+                <form action="/api/251109019/tavsiyeler" method="POST">
+
+                    <div class="a-girdi-grubu">
+                        <label class="a-etiket">Ürün Adı / Modeli</label>
+                        <input type="text" name="urunAdi" class="a-metin-kutusu"
+                            placeholder="Örn: Asus ROG Strix G15..." required>
+                    </div>
+
+                    <div class="a-girdi-grubu">
+                        <label class="a-etiket">Hangi Kategoriye Ait?</label>
+                        <select name="kategoriAdi" class="a-secim-kutusu" required>
+                            <option value="">Lütfen Bir Kategori Seçin</option>
+                            <option value="Tavsiye Ürünler">Genel Tavsiye Ürünler</option>
+                            <option value="Donanım İnceleme">Bilgisayar & Donanım</option>
+                            <option value="Mobil">Akıllı Telefon & Tablet</option>
+                        </select>
+                    </div>
+
+                    <div class="a-girdi-grubu">
+                        <label class="a-etiket">Ürün İncelemesi / Açıklama</label>
+                        <textarea name="incelemeMetni" class="a-metin-alani" rows="6"
+                            placeholder="Bu ürünü neden tavsiye ediyorsunuz? Özellikleri neler?..." required></textarea>
+                    </div>
+
+                    <div style="display: flex; gap: 20px;">
+                        <div class="a-girdi-grubu" style="flex: 1;">
+                            <label class="a-etiket">Ortalama Fiyat (₺)</label>
+                            <input type="text" name="fiyat" class="a-metin-kutusu" placeholder="Örn: 35.000 TL">
+                        </div>
+                        <div class="a-girdi-grubu" style="flex: 1;">
+                            <label class="a-etiket">Satın Alma Linki</label>
+                            <input type="url" name="satinAlmaLinki" class="a-metin-kutusu" placeholder="https://...">
+                        </div>
+                    </div>
+
+                    <div class="a-girdi-grubu">
+                        <label class="a-etiket">Ürün Görseli Bağlantısı (URL)</label>
+                        <input type="text" name="gorselURL" class="a-metin-kutusu" placeholder="/resim/urun1.png"
+                            required>
+                    </div>
+
+                    <button type="submit" class="a-kaydet-butonu"><i class="fa-solid fa-plus"></i> Ürünü Sisteme
+                        Ekle</button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+</body>
+
+</html>

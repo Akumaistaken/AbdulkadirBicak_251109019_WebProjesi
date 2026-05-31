@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş ve Kayıt</title>
+    <link rel="stylesheet" href="/css/kayit_giris.css">
+</head>
+
+<body>
+
+    <div class="a-ana-kutu">
+        <input type="radio" name="a-secici" id="a-giris-radyo" checked>
+        <input type="radio" name="a-secici" id="a-kayit-radyo">
+
+        <div class="a-form-kapsayici">
+
+            <div class="a-form-kutusu a-giris-kutusu">
+                <h2>Giriş Yap</h2>
+                <form action="/giris" method="POST">
+                    <div class="a-girdi-grubu">
+                        <input type="email" name="eposta" placeholder="E-posta adresiniz" required>
+                    </div>
+                    <div class="a-girdi-grubu">
+                        <input type="password" name="sifre" placeholder="Şifreniz" required>
+                    </div>
+                    <button type="submit" class="a-buton">Giriş</button>
+                </form>
+                <p class="a-gecis-metni">Hesabın yok mu? <label for="a-kayit-radyo" class="a-gecis-linki">Kayıt
+                        Ol</label></p>
+            </div>
+
+            <div class="a-form-kutusu a-kayit-kutusu">
+                <h2>Kayıt Ol</h2>
+                <form action="/kayit" method="POST">
+                    <div class="a-girdi-grubu">
+                        <input type="text" name="adsoyad" placeholder="Ad Soyad" required>
+                    </div>
+                    <div class="a-girdi-grubu">
+                        <input type="email" name="eposta" placeholder="E-posta adresiniz" required>
+                    </div>
+                    <div class="a-girdi-grubu">
+                        <input type="password" name="sifre" placeholder="Şifreniz" required>
+                    </div>
+                    <button type="submit" class="a-buton">Kayıt Ol</button>
+                </form>
+                <p class="a-gecis-metni">Zaten hesabın var mı? <label for="a-giris-radyo" class="a-gecis-linki">Giriş
+                        Yap</label></p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
